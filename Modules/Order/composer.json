@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/orders",
+    "name": "nwidart/order",
     "description": "",
     "authors": [
         {
@@ -17,14 +17,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Orders\\": "app/",
-            "Modules\\Orders\\Database\\Factories\\": "database/factories/",
-            "Modules\\Orders\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Order\\": "app/",
+            "Modules\\Order\\Database\\Factories\\": "database/factories/",
+            "Modules\\Order\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Orders\\Tests\\": "tests/"
+            "Modules\\Order\\Tests\\": "tests/"
         }
     }
 }

@@ -1,18 +1,18 @@
 <?php
 
-namespace Modules\Orders\Http\Controllers;
+namespace Modules\Order\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('orders::index');
+        return view('order::index');
     }
 
     /**
@@ -20,7 +20,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('orders::create');
+        return view('order::create');
     }
 
     /**
@@ -33,7 +33,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        return view('orders::show');
+        return view('order::show');
     }
 
     /**
@@ -41,7 +41,7 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        return view('orders::edit');
+        return view('order::edit');
     }
 
     /**
