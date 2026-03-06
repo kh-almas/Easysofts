@@ -1,0 +1,11 @@
+{
+    "name": "Factory",
+    "alias": "factory",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Factory\\Providers\\FactoryServiceProvider"
+    ],
+    "files": []
+}
