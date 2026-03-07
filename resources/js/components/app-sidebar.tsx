@@ -37,6 +37,21 @@ const mainNavItems: NavItem[] = [
         href: '/bom-items',
         icon: LayoutGrid,
     },
+    {
+        title: 'Buyer Orders',
+        href: '/buyer-orders',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Purchases',
+        href: '/purchases',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Inventory Txns',
+        href: '/inventory-txns',
+        icon: LayoutGrid,
+    },
 ];
 
 const footerNavItems: NavItem[] = [

@@ -1,0 +1,11 @@
+{
+    "name": "BuyerOrder",
+    "alias": "buyerorder",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\BuyerOrder\\Providers\\BuyerOrderServiceProvider"
+    ],
+    "files": []
+}

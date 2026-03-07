@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/buyerorder",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\BuyerOrder\\": "app/",
+            "Modules\\BuyerOrder\\Database\\Factories\\": "database/factories/",
+            "Modules\\BuyerOrder\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\BuyerOrder\\Tests\\": "tests/"
+        }
+    }
+}

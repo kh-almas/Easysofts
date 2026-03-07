@@ -2,5 +2,8 @@
     "Orders": true,
     "Order": true,
     "Factory": true,
-    "Product": true
+    "Product": true,
+    "BuyerOrder": true,
+    "Purchase": true,
+    "Inventory": true
 }
