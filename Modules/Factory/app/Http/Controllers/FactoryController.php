@@ -4,53 +4,68 @@ namespace Modules\Factory\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Inertia\Inertia;
+use Modules\Factory\Models\Factory;
 
 class FactoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('factory::index');
+        $q = $request->string('q')->toString();
+
+        $factories = Factory::query()
+            ->when($q, function ($query) use ($q) {
+                $query->where('name', 'like', "%{$q}%")
+                    ->orWhere('code', 'like', "%{$q}%");
+            })
+            ->latest('id')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('modules/factories/Index', [
+            'factories' => $factories,
+            'filters' => [
+                'q' => $q,
+            ],
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Request $request)
     {
-        return view('factory::create');
+        $data = $request->validate([
+            'name' => ['required','string','max:255'],
+            'code' => ['required','string','max:255','unique:factories,code'],
+            'address' => ['nullable','string'],
+            'status' => ['required','integer','in:0,1'],
+        ]);
+
+        Factory::create($data);
+
+        return back()->with('success', 'Factory created successfully.');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request) {}
-
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function update(Request $request, Factory $factory)
     {
-        return view('factory::show');
+        $data = $request->validate([
+            'name' => ['required','string','max:255'],
+            'code' => [
+                'required','string','max:255',
+                Rule::unique('factories', 'code')->ignore($factory->id),
+            ],
+            'address' => ['nullable','string'],
+            'status' => ['required','integer','in:0,1'],
+        ]);
+
+        $factory->update($data);
+
+        return back()->with('success', 'Factory updated successfully.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function destroy(Factory $factory)
     {
-        return view('factory::edit');
+        $factory->delete();
+
+        return back()->with('success', 'Factory deleted successfully.');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id) {}
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id) {}
 }
