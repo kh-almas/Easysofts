@@ -58,8 +58,6 @@ class BomItemController extends Controller
             ->orderBy('name')
             ->get(['id', 'factory_id', 'sku', 'name']);
 
-//        dd($fgProducts);
-
         return Inertia::render('modules/products/BomItem', [
             'bomItems' => $bomItems,
             'factories' => $factories,
@@ -74,7 +72,6 @@ class BomItemController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request->all());
         $data = $request->validate([
             'factory_id' => ['required', 'integer', 'exists:factories,id'],
             'fg_product_id' => [
